@@ -1,0 +1,5 @@
+项目名：jdbc
+文件夹名称:	files
+				jdbc.sql
+jdbc的意思是:java数据库连接
+本机固定ip：127.0.0.1
