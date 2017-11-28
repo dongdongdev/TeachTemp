@@ -37,5 +37,25 @@ go
 delete from TbDept where deptId=2
 go
 
+/*员工表*/
+create table TbEmployee
+(
+	eid int identity primary key not null,
+	ename nvarchar(50) unique not null, /*姓名*/
+	sex char(1) check(sex in('f','m','n')) default 'n' not null, /*性别*/
+	salary decimal(10,2) check(salary>=0) not null,/*工资*/
+	phone varchar(20),/*电话*/
+	deptId int foreign key references TbDept(deptId) not null,/*部门*/
+	indate datetime default getdate() not null /*入职日期*/
+)
+go
+
+select * from TbEmployee
+go
+
+select * from TbDept
+go
+
+
 
 

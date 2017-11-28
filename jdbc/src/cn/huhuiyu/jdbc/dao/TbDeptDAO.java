@@ -63,8 +63,8 @@ public class TbDeptDAO {
 	// 结果集的读取
 	// ResultSet.next()表示移动到结果集的下一行，如果成功就返回true
 	// 通过ResultSet.get列数据类型（"列名称"）获取列的数据
-	// 例如 rs.getString("deptName")表示获取deptName的数据	
-	
+	// 例如 rs.getString("deptName")表示获取deptName的数据
+
 	public TbDept queryByKey(TbDept dept) throws Exception {
 		// 按照主键查询记录（最多只有一笔记录）
 		PreparedStatement ps = connection.prepareStatement(QUERY_BY_KEY);
@@ -89,16 +89,15 @@ public class TbDeptDAO {
 	}
 
 	public int add(TbDept dept) throws Exception {
-		//ResultSet=查询的结果
-		//结果是一个表格，包括n行m列
-		//deptId,deptName
-		//1,dddd
-		//2,ffff
-		//查询的结果是定位到第一行记录的上一行
-		//通过next方法移动到下一行
-		//第一次执行就会移动到第一行，如果没有记录了就返会false
-		
-		
+		// ResultSet=查询的结果
+		// 结果是一个表格，包括n行m列
+		// deptId,deptName
+		// 1,dddd
+		// 2,ffff
+		// 查询的结果是定位到第一行记录的上一行
+		// 通过next方法移动到下一行
+		// 第一次执行就会移动到第一行，如果没有记录了就返会false
+
 		PreparedStatement ps = connection.prepareStatement(INSERT, PreparedStatement.RETURN_GENERATED_KEYS);
 		ps.setString(1, dept.getDeptName());
 		ps.setString(2, dept.getDeptInfo());
@@ -156,16 +155,22 @@ public class TbDeptDAO {
 		// System.out.println(dept);
 
 		// 删除的测试
-		TbDept dept = new TbDept();
-		dept.setDeptId(1);
-		int result = dao.delete(dept);
-		System.out.println(result);
+		// TbDept dept = new TbDept();
+		// dept.setDeptId(1);
+		// int result = dao.delete(dept);
+		// System.out.println(result);
 
 		// 查询测试
 		// List<TbDept> list = dao.query();
 		// for (TbDept tbDept : list) {
 		// System.out.println(tbDept);
 		// }
+
+		TbDept dept = new TbDept();
+		dept.setDeptId(3);
+		dept = dao.queryByKey(dept); // 按照主键查询
+		System.out.println(dept);
+				
 		conn.close();
 	}
 
@@ -178,6 +183,5 @@ public class TbDeptDAO {
 
 	// 作业二
 	// 添加学生表的修改和删除记录的测试类
-	
 
 }
