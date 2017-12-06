@@ -19,27 +19,56 @@ public class TbGoodsDAO extends BaseDAO {
 		int result = ps.executeUpdate();
 		ps.close();
 		return result;
-	}	
-	
+	}
+
 	public int delete(TbGoods goods) throws Exception {
-		throw new Exception("删除的功能需要你们自己完成");
+		PreparedStatement ps = connection.prepareStatement
+				("delete from TbGoods where gid=?");
+		ps.setInt(1, goods.getGid());
+		int result = ps.executeUpdate();
+		ps.close();
+		return result;
 	}
 
 	public int modify(TbGoods goods) throws Exception {
-		throw new Exception("修改的功能需要你们自己完成");
+		PreparedStatement ps = connection
+				.prepareStatement(
+						"update TbGoods set gname=?,ginfo=?,price=?,amount=? where gid=?");
+		ps.setString(1, goods.getGname());
+		ps.setString(2, goods.getGinfo());
+		ps.setBigDecimal(3, goods.getPrice());
+		ps.setInt(4, goods.getAmount());
+		ps.setInt(5, goods.getGid());
+		int result = ps.executeUpdate();
+		ps.close();
+		return result;
 	}
 
 	public TbGoods queryByKey(TbGoods goods) throws Exception {
-		throw new Exception("按照主键查询的功能需要你们自己完成");
+		PreparedStatement ps = connection.prepareStatement(
+				"select * from TbGoods where gid=?");
+		TbGoods result = null;
+		ps.setInt(1, goods.getGid());
+		ResultSet rs = ps.executeQuery();
+		if (rs.next()) {
+			result = new TbGoods();
+			result.setGid(rs.getInt("gid"));
+			result.setGname(rs.getString("gname"));
+			result.setGinfo(rs.getString("ginfo"));
+			result.setPrice(rs.getBigDecimal("price"));
+			result.setAmount(rs.getInt("amount"));
+		}
+		rs.close();
+		ps.close();
+		return result;
 	}
-	
-	public List<TbGoods> query() throws Exception{
-		List<TbGoods> list=new ArrayList<TbGoods>();
-		PreparedStatement ps=connection.prepareStatement(
-				"select * from TbGoods");		
-		ResultSet rs=ps.executeQuery();
-		while(rs.next()) {
-			TbGoods goods=new TbGoods();		
+
+	public List<TbGoods> query() throws Exception {
+		List<TbGoods> list = new ArrayList<TbGoods>();
+		PreparedStatement ps = connection.prepareStatement("select * from TbGoods");
+		ResultSet rs = ps.executeQuery();
+		while (rs.next()) {
+			TbGoods goods = new TbGoods();
 			goods.setGid(rs.getInt("gid"));
 			goods.setGname(rs.getString("gname"));
 			goods.setGinfo(rs.getString("ginfo"));

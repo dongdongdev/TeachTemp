@@ -44,6 +44,7 @@
 				<th>描述</th>
 				<th>价格</th>
 				<th>数量</th>
+				<th>操作</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -56,6 +57,11 @@
 				<td><%=goods.getGinfo() %></td>
 				<td><%=goods.getPrice() %></td>
 				<td><%=goods.getAmount() %></td>
+				<td>
+					<!-- http://localhost:8080/MyJSP/form.jsp -->
+					<a href="delete.jsp?gid=<%=goods.getGid()%>">删除</a>
+					<a href="modify.jsp?gid=<%=goods.getGid()%>">修改</a>
+				</td>
 			</tr>
 			<%
 				}

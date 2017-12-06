@@ -24,5 +24,6 @@ public class MyServlet extends HttpServlet {
 		//设置应答的编码,必须是第一句
 		resp.setCharacterEncoding("UTF-8");
 		resp.getWriter().println("<h1>servlet你好！</h1>");
+		
 	}
 }
