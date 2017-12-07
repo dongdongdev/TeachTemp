@@ -1,0 +1,32 @@
+<div ng-controller="TestFormCtrl">
+  <h1>index.debug.html#!/route/page/test/form</h1>
+  <form novalidate name="myform">
+    <div class="form-group" 
+  ng-class="{true:'has-error'}[myform.username.$dirty && myform.username.$invalid]">
+      <div class="input-group">
+        <span class="input-group-addon">用户名</span>
+        <input type="text" name="username"
+          ng-model="formdata.username"
+          required="required"
+          ng-pattern="/^[a-zA-Z]{6,10}$/"
+          class="form-control">
+      </div>
+    </div>
+    <div class="text-center text-danger" 
+      ng-if="myform.username.$dirty"
+      ng-messages="myform.username.$error">
+      <p ng-message="required">用户名必须填写</p>
+      <p ng-message="pattern">用户名必须是6-10个英文字母</p>
+      <!-- 
+        minlength maxlength length
+        min max email
+       -->
+    </div>
+    <div class="text-center">
+      <input type="submit" value="提交"
+      ng-click="toSubmit()"
+      ng-disabled="!myform.$valid"
+      class="btn btn-primary">
+    </div>
+  </form>
+</div>

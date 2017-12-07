@@ -1,7 +1,7 @@
 package cn.huhuiyu.servlet;
 
 import java.io.IOException;
-import java.util.List;
+import java.math.BigDecimal;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,9 +13,9 @@ import cn.huhuiyu.dao.Db;
 import cn.huhuiyu.dao.TbGoodsDAO;
 import cn.huhuiyu.entity.TbGoods;
 
-@WebServlet(name = "listservlet", urlPatterns = "/list.servlet")
-public class ListServlet extends HttpServlet {
-	private static final long serialVersionUID = 3202859730005281176L;
+@WebServlet(name = "submit", urlPatterns = "/submit.servlet")
+public class SubmitServlet extends HttpServlet {
+	private static final long serialVersionUID = -8554043919683628505L;
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -24,19 +24,22 @@ public class ListServlet extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		TbGoodsDAO dao = new TbGoodsDAO();
+		req.setCharacterEncoding("UTF-8");
+		TbGoods goods = new TbGoods();
+		goods.setGname(req.getParameter("gname"));
+		goods.setGinfo(req.getParameter("ginfo"));
+		goods.setPrice(new BigDecimal(req.getParameter("price")));
+		goods.setAmount(Integer.parseInt(req.getParameter("amount")));
 		try {
+			TbGoodsDAO dao = new TbGoodsDAO();
 			dao.setConnection(Db.getConn());
-			List<TbGoods> list = dao.query();
+			dao.add(goods);
 			dao.getConnection().close();
-			// 将查询的数据放到请求中
-			req.setAttribute("list", list);
-
 		} catch (Exception e) {
-			e.printStackTrace();
+			throw new ServletException(e);
 		}
-		// java代码部分完成后，将页面请求转发给jsp(list.jsp)
-		req.getRequestDispatcher("list.jsp").forward(req, resp);
+		// 添加完成后，请求重定向转到list.servlet
+		resp.sendRedirect("list.servlet");
 	}
 
 }
