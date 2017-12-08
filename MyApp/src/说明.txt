@@ -1,3 +1,5 @@
+https://github.com/dongdongdev/TeachTemp
+
 npm install -g cnpm --registry=https://registry.npm.taobao.org
 
 cnpm install -g browser-sync
