@@ -35,6 +35,7 @@
 				<th>商品信息</th>
 				<th>价格</th>
 				<th>数量</th>
+				<th>操作</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -51,11 +52,41 @@
 			<td>${goods.ginfo}</td>
 			<td>${goods.price}</td>
 			<td>${goods.amount}</td>
+			<td>
+			<!-- 
+				onclick表示当所在元素被点击的时候要执行的脚本
+			 -->
+				<a href="javascript:void(0);"
+		onclick="toDelete('${goods.gid}','${goods.gname}')">删除</a>
+				<a href="toModify.servlet?gid=${goods.gid}">修改</a>
+			</td>
 		</tr>	
 		</c:forEach>				
 		</tbody>
 	</table>
 	
-	
+	<script type="text/javascript">
+		/* script标记用于编写页面脚本(编程语言)，
+			一般都是javascript(js)*/
+		/* function是定义方法，格式是function 名称(参数...){} */
+		function toDelete(id, name) {
+			//在浏览器的控制台输出信息(ie系浏览器无效)
+			console.log("删除的信息：", id, "-", name);
+			//确认对话框
+			var r = confirm("是否删除:" + name + "(" + id + ")");
+			alert(r); //弹出对话框显示用户的选择
+			//用户确认就删除
+			
+			if (r) {
+				//location.href="url地址"
+				//表示将当前页面切换到url地址指定的值
+				location.href = "delete.servlet?gid=" + id;
+			}
+
+		}
+		
+		
+		
+	</script>
 </body>
 </html>

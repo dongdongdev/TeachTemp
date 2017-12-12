@@ -1,2 +1,4 @@
 /jdbc/bin
 /MyJSP/build
+/MyApp/node_modules
+/MyApp/dist
