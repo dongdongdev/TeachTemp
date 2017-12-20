@@ -9,14 +9,14 @@
   <body>
     <!-- 作业：完成上课知识点中全部的样式效果 -->
     <div class="dropdown">
-      <span class="btn btn-default dropdown-toggle" 
+      <span class="btn btn-default dropdown-toggle"
         data-toggle="dropdown">
         下拉菜单<span class="caret"></span>
       </span>
       <ul class="dropdown-menu" role="menu">
         <li role="presentation">
           <a role="menuitem" href="javascript:void(0)">
-            <i class="glyphicon glyphicon-plus"></i> 打开</a>
+          <i class="glyphicon glyphicon-plus"></i> 打开</a>
         </li>
         <li role="presentation" class="divider"></li>
         <li role="presentation">
@@ -30,14 +30,13 @@
         </li>
       </ul>
     </div>
-
     <div class="btn-group btn-group-justified">
       <span class="btn btn-danger">按钮一</span>
       <span class="btn btn-danger">按钮二</span>
       <span class="btn btn-danger">按钮三</span>
     </div>
     
-    <ul class="nav nav-tabs">
+    <ul class="nav nav-tabs nav-justified">
       <li role="presentation">
         <a href="javascript:void(0);">首页</a>
       </li>
@@ -48,7 +47,36 @@
         <a href="javascript:void(0);">员工管理</a>
       </li>
     </ul>
+    <nav class="text-center">
+      <ul class="pagination">
+        <li>
+          <a href="javascript:void(0);">&lt;&lt;</a>
+        </li>
+        <li>
+          <a href="javascript:void(0);">上一页</a>
+        </li>
+        <li class="active">
+          <a href="javascript:void(0);">1</a>
+        </li>
+        <li>
+          <a href="javascript:void(0);">2</a>
+        </li>
+        <li>
+          <a href="javascript:void(0);">下一页</a>
+        </li>
+        <li class="disabled">
+          <a href="javascript:void(0);">&gt;&gt;</a>
+        </li>
+      </ul>
+    </nav>
 
+    <nav class="text-center">
+      <ul class="pager">
+        <li><a href="javascript:void(0);">上一页</a></li>
+        <li><a href="javascript:void(0);">下一页</a></li>
+      </ul>
+    </nav>
+    
     <script type="text/javascript" src="js/jquery.min.js"></script>
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
   </body>
