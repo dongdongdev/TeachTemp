@@ -25,11 +25,42 @@
               <span class="small">副标题</span>
             </div>
           </div>
-          
+
+          <div class="alert alert-danger">警告一</div>
+          <div class="alert alert-info">警告二</div>
+          <div class="alert alert-warning">警告三</div>
+          <div class="alert alert-success">警告四</div>
+
+          <div class="progress">
+            <div class="progress-bar progress-bar-danger progress-bar-striped" id="progress" style="width: 0%;">
+              <span id="pspan">0</span>
+            </div>
+          </div>
+
         </div>
       </div>
     </div>
     <script type="text/javascript" src="js/jquery.min.js"></script>
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
+
+    <script type="text/javascript">
+      $(function () {
+        var p=0; /*进度变量*/
+        var $p=$("#progress");
+        var timer=setInterval(function(){
+          p++;
+          if(p>100){
+            clearInterval(timer);
+            $p.fadeOut(2000,function(){
+              location="http://qq.com";
+            });
+            return;
+          }
+          $p.css("width",p+"%");
+          $("#pspan").html(p);
+        },100);
+
+      });
+    </script>
   </body>
 </html>
