@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>bs11.html</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/app.css">
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="col-xs-4"></div>
+          <div class="col-xs-4">
+            <div class="form-group">
+              <div class="input-group">
+                <span class="input-group-addon">
+                  <i class="glyphicon glyphicon-cloud"></i>
+                </span>
+                <input type="text" class="form-control"
+                placeholder="用户名" data-toggle="tooltip"
+                data-trigger="click"
+                data-placement="bottom" title="用户名长度必须是6-10">
+              </div>
+            </div>
+            <div class="text-center">
+              <button id="btnOk" class="btn btn-primary" type="button"
+              data-container="body" data-toggle="popover"
+              data-placement="buttom" title="标题栏信息"
+              data-content="弹出信息">确定</button>
+            </div>
+            
+            <div class="panel-group" id="mypg" role="tablist">
+              
+              <div class="panel panel-primary" role="tab" id="head1">
+                <div class="panel-heading">
+                  <div class="panel-title">
+                    <a data-toggle="collapse" href="#body1"
+                     data-parent="#mypg">小马开发有限公司</a>
+                  </div>
+                </div>                
+                <div id="body1" class="panel-collapse collapse in"
+                 role="tabpanel" aria-labelledby="head1">
+                  <div class="panel-body">
+                    <span class="h3">
+                      传说中的小马开发有限公司<br>
+                      董事长：小双<br>
+                      &reg;版权所有&copy;：胡老师
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="panel panel-primary" role="tab" id="head2">
+                <div class="panel-heading">
+                  <div class="panel-title">
+                    <a data-toggle="collapse" href="#body2"
+                     data-parent="#mypg">小马开发有限公司</a>
+                  </div>
+                </div>                
+                <div id="body2" class="panel-collapse collapse"
+                 role="tabpanel" aria-labelledby="head2">
+                  <div class="panel-body">
+                    <span class="h3">
+                      传说中的小马开发有限公司<br>
+                      董事长：小双<br>
+                      &reg;版权所有&copy;：胡老师
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+
+            </div>
+          </div>
+          <div class="col-xs-4"></div>
+        </div>
+      </div>
+    </div>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+    $(function(){
+      $("[data-toggle='tooltip']").tooltip();
+      $("#btnOk").popover();
+      $(".collapse").collapse();
+    });
+    </script>
+  </body>
+</html>
